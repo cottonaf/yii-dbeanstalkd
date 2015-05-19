@@ -7,18 +7,18 @@ upon existing implementations but do not offer any method of failover or recover
 
 Since a single server going down would cause complete failure this must, at the very least:
 
-	1) be aware of multiple servers/connections
-	2) be able to choose between them based upon a simple weighted algorithm
-	3) be able to use a different server if one is unavailable
+	* be aware of multiple servers/connections
+	* be able to choose between them based upon a simple weighted algorithm
+	* be able to use a different server if one is unavailable
 
 In the event of a server failure, this class makes no attempt to ensure enqueued items
 are not lost since.  This will allow the user to enqueue in another server and keep going.
  
 This class extends upon great work from the following individuals or projects:
 
-	1) davidpersson's beanstalk project: <https://github.com/davidpersson/beanstalk>
-	2) Yiinstalk, a yii extension for beanstalkd: <https://github.com/shiki/Yiinstalk>
-	3) yii2-beanstalk, a yii2 extension for beanstalkd: <https://github.com/udokmeci/yii2-beanstalk>
+	* davidpersson's beanstalk project: <https://github.com/davidpersson/beanstalk>
+	* Yiinstalk, a yii extension for beanstalkd: <https://github.com/shiki/Yiinstalk>
+	* yii2-beanstalk, a yii2 extension for beanstalkd: <https://github.com/udokmeci/yii2-beanstalk>
 
 ## Forewarning
 This is my first contribution to github and to the world.  I'm not perfect and I am already busy at work.
@@ -28,8 +28,8 @@ mis-step or outright mistake on my part I will be grateful.  Thank you, and good
 
 ## Usage
 This project requires:
-	1) davidpersson's beanstalkd client to be added to your yii project
-	2) modifications to config files to support these additions
+	* davidpersson's beanstalkd client to be added to your yii project
+	* modifications to config files to support these additions
 
 ### adding davidpersson's class to your project
 Clone davidpersson's library and place it in the extensions folder of your yii application, 
@@ -39,13 +39,15 @@ in a folder named 'beanstalk'.
 Ensure that the Beanstalk.php class from this project has been placed in your components folder.
 
 Ensure this line has been added under the aliases section of your yii config file:
-
+``` php
 'aliases'=>array(
 		// davidpersson's library has been installed to extensions/beanstalk folder
 		'Beanstalk'=> 'application.extensions.beanstalk.src',
 	),
+```
 
 Ensure these lines have been added to the components section of your yii config file:
+``` php
 'components'=>array(
 		'beanstalk'=>array(
 			'class'=>'application.components.Beanstalk',
@@ -67,11 +69,13 @@ Ensure these lines have been added to the components section of your yii config 
 			),
 		),
 ),
+```
 
 After this point one should be able to make use of beanstalk functions by doing the following:
 
 #### beanstalkd producer example
 
+``` php
 /*
  * connect to a server (determines by weight or selects only existing server::
  */
@@ -106,11 +110,12 @@ echo "Added $jobDetailString to queue.\n";
 echo "Return was: $ret.\n";
 
 $client->disconnect();
-
+```
 
 #### beanstalkd consumer example
 
 ##### peeking
+``` php
 $peek = Yii::app()->beanstalk->getClient();
 $peek->connect();
 $peek->watch('default');
@@ -122,8 +127,10 @@ $result = touch($job['body']);
 print_r($job);
 print_r($result);
 $peek->disconnect();
+```
 
 ##### consuming
+``` php
 $consumer = Yii::app()->beanstalk->getClient();
 $consumer->connect();
 $consumer->watch('default');
@@ -148,3 +155,4 @@ while(true)
 }
 
 $consumer->disconnect();
+```
