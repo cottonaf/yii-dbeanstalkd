@@ -16,9 +16,9 @@ are not lost since.  This will allow the user to enqueue in another server and k
  
 This class extends upon great work from the following individuals or projects:
 
-	* davidpersson's beanstalk project: <https://github.com/davidpersson/beanstalk>
-	* Yiinstalk, a yii extension for beanstalkd: <https://github.com/shiki/Yiinstalk>
-	* yii2-beanstalk, a yii2 extension for beanstalkd: <https://github.com/udokmeci/yii2-beanstalk>
+	* davidpersson's [beanstalk](https://github.com/davidpersson/beanstalk) project
+	* [Yiinstalk](https://github.com/shiki/Yiinstalk), a yii extension for beanstalkd
+	* [yii2-beanstalk](https://github.com/udokmeci/yii2-beanstalk), a yii2 extension for beanstalkd
 
 ## Forewarning
 This is my first contribution to github and to the world.  I'm not perfect and I am already busy at work.
