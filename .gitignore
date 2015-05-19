@@ -1,0 +1,4 @@
+# Vim gitignore settings                                                                                                                                                                                                        
+*~
+*.swp
+*.swo
