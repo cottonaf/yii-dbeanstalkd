@@ -7,18 +7,18 @@ upon existing implementations but do not offer any method of failover or recover
 
 Since a single server going down would cause complete failure this must, at the very least:
 
-	* be aware of multiple servers/connections
-	* be able to choose between them based upon a simple weighted algorithm
-	* be able to use a different server if one is unavailable
+	1 be aware of multiple servers/connections
+	2 be able to choose between them based upon a simple weighted algorithm
+	3 be able to use a different server if one is unavailable
 
 In the event of a server failure, this class makes no attempt to ensure enqueued items
 are not lost since.  This will allow the user to enqueue in another server and keep going.
  
 This class extends upon great work from the following individuals or projects:
 
-	* davidpersson's [beanstalk](https://github.com/davidpersson/beanstalk) project
-	* [Yiinstalk](https://github.com/shiki/Yiinstalk), a yii extension for beanstalkd
-	* [yii2-beanstalk](https://github.com/udokmeci/yii2-beanstalk), a yii2 extension for beanstalkd
+	1 davidpersson's [beanstalk](https://github.com/davidpersson/beanstalk) project
+	2 [Yiinstalk](https://github.com/shiki/Yiinstalk), a yii extension for beanstalkd
+	3 [yii2-beanstalk](https://github.com/udokmeci/yii2-beanstalk), a yii2 extension for beanstalkd
 
 ## Forewarning
 This is my first contribution to github and to the world.  I'm not perfect and I am already busy at work.
@@ -28,6 +28,7 @@ mis-step or outright mistake on my part I will be grateful.  Thank you, and good
 
 ## Usage
 This project requires:
+	
 	* davidpersson's beanstalkd client to be added to your yii project
 	* modifications to config files to support these additions
 
